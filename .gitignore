@@ -1,0 +1,9 @@
+*.pfx
+*.pem
+*.key
+*.log
+# Ignore PowerShell temporary files
+*.log
+*.xml
+# Ignore VS Code settings
+.vscode/
