@@ -31,16 +31,38 @@ A dynamic discovery script that audits all Windows Servers joined to an Active D
 
 ---
 
-## 3. LetsEncrypt-Wildcard.ps1 (Let's Encrypt for Exchange & IIS)
+# Wildcard SSL Automation (Let’s Encrypt + Cloudflare)
 
-### **Overview**
-A specialized script for **Exchange Server 2019** that automates the acquisition and renewal of SSL certificates using the **win-acme** client and Let’s Encrypt. 
+## Purpose
+Automates wildcard SSL certificate issuance and renewal using Let's Encrypt DNS validation via Cloudflare API.
 
-### **Key Features**
-* **Lifecycle Management:** Handles the entire process from ACME challenge validation to PFX export.
-* **Exchange Integration:** Automatically updates SSL bindings for Exchange services including IIS, SMTP, IMAP, and POP.
-* **Redirection Logic:** Configures and enforces HTTP-to-HTTPS redirection for client access.
-* **Scheduled Renewal:** Designed to run as a recurring task to ensure certificates never expire.
+---
+
+## Features
+- Automated wildcard certificate issuance (*.domain.com)
+- Cloudflare DNS challenge integration
+- Automatic renewal handling
+- PEM + PFX export
+- Windows Certificate Store installation
+- OpenSSL fallback for compatibility
+- Email notification support (via M365 script integration)
+
+---
+
+## Requirements
+- Windows Server / Windows 10+
+- PowerShell 5.1 or 7+
+- Internet access for ACME + OpenSSL download
+- Posh-ACME module
+
+---
+
+## Environment Variables
+Set these before running:
+
+```powershell
+CLOUDFLARE_API_TOKEN
+M365HC_PFX_PASSWORD
 
 ---
 
