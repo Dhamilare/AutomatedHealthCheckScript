@@ -8,26 +8,26 @@ This repository contains a suite of PowerShell automation tools designed to mana
 ## 1. M365HC_v2.ps1 (Microsoft 365 & Entra ID Health Check)
 
 ### **Overview**
-[cite_start]A comprehensive auditing tool that connects to Microsoft 365 and Entra ID to produce a branded, color-coded HTML health report[cite: 80, 87]. [cite_start]It utilizes **Certificate-Based Authentication (CBA)**, ensuring that no plain-text passwords or client secrets are stored on the host server[cite: 134, 135].
+A comprehensive auditing tool that connects to Microsoft 365 and Entra ID to produce a branded, color-coded HTML health report. It utilizes **Certificate-Based Authentication (CBA)**, ensuring that no plain-text passwords or client secrets are stored on the host server.
 
 ### **Key Features**
-* [cite_start]**Security Audit:** Checks SPF, DKIM, and DMARC records, MFA registration status, and identifies risky user sign-ins[cite: 91, 297].
-* [cite_start]**Identity Governance:** Monitors privileged role assignments, inactive accounts (90 days), and Security Defaults[cite: 91, 291].
-* [cite_start]**Optimization:** Flags "license waste" by finding licensed users who are currently disabled[cite: 289].
-* [cite_start]**Automated Delivery:** Sends the final report via Microsoft Graph API to configured IT recipients[cite: 81, 276].
+* **Security Audit:** Checks SPF, DKIM, and DMARC records, MFA registration status, and identifies risky user sign-ins.
+* **Identity Governance:** Monitors privileged role assignments, inactive accounts (90 days), and Security Defaults.
+* **Optimization:** Flags "license waste" by finding licensed users who are currently disabled.
+* **Automated Delivery:** Sends the final report via Microsoft Graph API to configured IT recipients.
 
 ---
 
 ## 2. AHC.ps1 (Automated Hybrid Health Check)
 
 ### **Overview**
-[cite_start]A dynamic discovery script that audits all Windows Servers joined to an Active Directory domain[cite: 474, 477]. [cite_start]It is "role-aware," automatically adjusting its check set if a server is identified as a Domain Controller[cite: 543].
+A dynamic discovery script that audits all Windows Servers joined to an Active Directory domain. It is "role-aware," automatically adjusting its check set if a server is identified as a Domain Controller.
 
 ### **Key Features**
-* [cite_start]**Infrastructure Vitals:** Monitors CPU, Memory, and Disk usage across the server fleet[cite: 545].
-* [cite_start]**Active Directory Health:** Performs DCDIAG tests, monitors SYSVOL/NETLOGON shares, and checks replication status[cite: 547].
-* [cite_start]**Compliance Tracking:** Audits privileged group memberships (Domain/Enterprise Admins) and validates Domain Password Policies[cite: 549].
-* [cite_start]**Event Log Intelligence:** Parses System and Application logs for critical errors from the last 24 hours[cite: 545, 547].
+* **Infrastructure Vitals:** Monitors CPU, Memory, and Disk usage across the server fleet.
+* **Active Directory Health:** Performs DCDIAG tests, monitors SYSVOL/NETLOGON shares, and checks replication status.
+* **Compliance Tracking:** Audits privileged group memberships (Domain/Enterprise Admins) and validates Domain Password Policies.
+* **Event Log Intelligence:** Parses System and Application logs for critical errors from the last 24 hours.
 
 ---
 
@@ -52,14 +52,14 @@ Before running, ensure the following machine-level variables are set:
 ## Deployment & Setup
 
 ### **Common Prerequisites**
-* [cite_start]**PowerShell 5.1+:** Required for all scripts[cite: 99, 490].
-* [cite_start]**Modules:** `ExchangeOnlineManagement` (v3.5.1) [cite: 99][cite_start], `ActiveDirectory` RSAT[cite: 490, 509], and `Posh-ACME` for SSL automation.
-* [cite_start]**Azure App Registration:** Required for M365 and Hybrid scripts to deliver reports via Graph API[cite: 101, 494, 572].
+* **PowerShell 5.1+:** Required for all scripts.
+* **Modules:** `ExchangeOnlineManagement` (v3.5.1), `ActiveDirectory` RSAT, and `Posh-ACME` for SSL automation.
+* **Azure App Registration:** Required for M365 and Hybrid scripts to deliver reports via Graph API.
 
 ### **Automation**
-[cite_start]It is recommended to deploy these scripts as **Scheduled Tasks**[cite: 211, 482]:
-* [cite_start]**M365HC:** Run daily to monitor tenant security posture[cite: 226].
-* [cite_start]**AHC:** Run during off-peak hours to capture infrastructure status[cite: 525].
+It is recommended to deploy these scripts as **Scheduled Tasks**:
+* **M365HC:** Run daily to monitor tenant security posture.
+* **AHC:** Run during off-peak hours to capture infrastructure status.
 * **SSL Automation:** Run daily to handle automatic renewals before the 90-day expiration.
 
-> [cite_start]**Security Note:** Sensitive configuration is stored as machine-level environment variables to keep the script files clean of credentials[cite: 173, 175]. [cite_start]Ensure NTFS permissions restrict access to these scripts to only the Service Account and Domain Admins[cite: 347, 611].
+> [cite_start]**Security Note:** Sensitive configuration is stored as machine-level environment variables to keep the script files clean of credentials. Ensure NTFS permissions restrict access to these scripts to only the Service Account and Domain Admins.
