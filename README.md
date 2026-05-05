@@ -62,4 +62,4 @@ It is recommended to deploy these scripts as **Scheduled Tasks**:
 * **AHC:** Run during off-peak hours to capture infrastructure status.
 * **SSL Automation:** Run daily to handle automatic renewals before the 90-day expiration.
 
-> [cite_start]**Security Note:** Sensitive configuration is stored as machine-level environment variables to keep the script files clean of credentials. Ensure NTFS permissions restrict access to these scripts to only the Service Account and Domain Admins.
+> **Security Note:** Sensitive configuration is stored as machine-level environment variables to keep the script files clean of credentials. Ensure NTFS permissions restrict access to these scripts to only the Service Account and Domain Admins.
